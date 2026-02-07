@@ -1,7 +1,15 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
 const app = require("./app");
-const seedProducts = require("./src/seed/seedProducts");
+
+let seedProducts;
+
+// ✅ SAFE REQUIRE (this is the key)
+try {
+  seedProducts = require("./src/seed/seedProducts");
+} catch (err) {
+  console.log("seedProducts not found, skipping seeding");
+}
 
 const PORT = process.env.PORT || 5000;
 
@@ -9,7 +17,18 @@ mongoose
   .connect(process.env.MONGO_URI)
   .then(async () => {
     console.log("MongoDB connected");
-    await seedProducts(); // ✅ автозаполнение товаров с картинками
-    app.listen(PORT, () => console.log(`Server: http://localhost:${PORT}`));
+
+    // ✅ ONLY run if file exists
+    if (seedProducts) {
+      try {
+        await seedProducts();
+      } catch (err) {
+        console.log("Seeding failed, continuing app start");
+      }
+    }
+
+    app.listen(PORT, () =>
+      console.log(`Server: http://localhost:${PORT}`)
+    );
   })
   .catch((err) => console.error("MongoDB error:", err.message));
