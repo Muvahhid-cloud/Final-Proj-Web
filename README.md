@@ -4,6 +4,7 @@
 ![MongoDB](https://img.shields.io/badge/Database-MongoDB-green?style=for-the-badge&logo=mongodb)
 ![JWT](https://img.shields.io/badge/Auth-JWT%20%2B%20bcrypt-blue?style=for-the-badge)
 ![RBAC](https://img.shields.io/badge/Security-RBAC-red?style=for-the-badge)
+  https://final-proj-web-3.onrender.com
 
 A modern, full-featured **coffee shop e-commerce platform** with user authentication, role-based access control (RBAC), order management, and an admin dashboard. Built with **Node.js**, **Express**, **MongoDB**, and **JWT**.
 
