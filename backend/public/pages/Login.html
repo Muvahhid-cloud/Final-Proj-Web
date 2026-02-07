@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login | Coffee Shop</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+
+<nav class="navbar">
+  <div class="logo">Coffee Shop</div>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/pages/Menu.html">Menu</a>
+    <a href="/pages/Cart.html">Cart</a>
+    <a href="/pages/Orders.html">Orders</a>
+    <a href="/pages/Login.html" id="login-link">Login</a>
+    <a href="/pages/Register.html" id="register-link">Register</a>
+    <li id="dashboardLink" style="display:none;"><a href="/pages/Dashboard.html">Dashboard</a></li>
+    <li id="userName" style="display:none;" class="username"></li>
+    <button id="logout-btn" style="display:none;">Logout</button>
+  </div>
+</nav>
+
+<main class="container">
+  <h1>Login</h1>
+
+  <input id="email" type="email" placeholder="Email">
+  <input id="password" type="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+
+  <p style="margin-top:15px;">
+    Don’t have an account?
+    <a href="/pages/Register.html"><strong>Register here</strong></a>
+  </p>
+</main>
+
+<script src="/js/nav.js"></script>
+<script src="/js/auth.js"></script>
+</body>
+</html>

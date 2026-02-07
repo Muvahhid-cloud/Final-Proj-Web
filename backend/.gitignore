@@ -1,0 +1,120 @@
+# ========================================
+# Node.js / npm
+# ========================================
+node_modules/
+npm-debug.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# ========================================
+# Environment Variables (SECRETS)
+# ========================================
+.env
+.env.local
+.env.*.local
+.env.production.local
+.env.development.local
+.env.test.local
+.env.example
+
+# ========================================
+# IDE & Editor
+# ========================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+.c9/
+*.iml
+.settings/
+
+# ========================================
+# OS Specific
+# ========================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ========================================
+# Logs
+# ========================================
+logs/
+*.log
+lerna-debug.log*
+
+# ========================================
+# Runtime Data
+# ========================================
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# ========================================
+# Coverage Reports
+# ========================================
+coverage/
+.nyc_output/
+*.lcov
+
+# ========================================
+# Build Output
+# ========================================
+dist/
+build/
+out/
+.next/
+.nuxt/
+.cache/
+.parcel-cache
+.vuepress/dist/
+
+# ========================================
+# Temporary Files
+# ========================================
+tmp/
+temp/
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# ========================================
+# Database
+# ========================================
+*.db
+*.sqlite
+*.sqlite3
+mongo.lock
+
+# ========================================
+# Certificates & Keys
+# ========================================
+*.pem
+*.pfx
+*.p12
+*.key
+*.crt
+*.cer
+
+# ========================================
+# Misc
+# ========================================
+.env.vault
+dist-ssr/
+*.egg-info/
+.env.*.local

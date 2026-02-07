@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Coffee Shop</div>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/pages/Menu.html">Menu</a>
+      <a href="/pages/Cart.html">Cart</a>
+      <a href="/pages/Orders.html">Orders</a>
+      <li id="dashboardLink" style="display:none;"><a href="/pages/Dashboard.html">Dashboard</a></li>
+      <li id="adminDashboardLink" style="display:none;"><a href="/pages/AdminDashboard.html">Admin Dashboard</a></li>
+      <button id="logout-btn" style="display:none;">Logout</button>
+    </div>
+  </nav>
+  <div class="admin-container">
+    <div class="admin-title">👨‍💼 Admin Dashboard</div>
+    
+    <div class="admin-analytics">
+      <h2>📊 Analytics Overview</h2>
+      <div id="analytics-summary">
+        <div><strong>💰 Total Revenue</strong><span id="totalRevenue" class="stat-value">$0</span></div>
+        <div><strong>📦 Total Orders</strong><span id="ordersCount" class="stat-value">0</span></div>
+      </div>
+    </div>
+    
+    <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);">
+      <h2 style="color: #6f4e37; font-size: 22px; margin-bottom: 20px; border-bottom: 2px solid #e0d7d3; padding-bottom: 10px;">👥 Registered Users & Orders</h2>
+      <table class="admin-table" id="userTable">
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Order Count</th>
+            <th>Orders</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="userTableBody"></tbody>
+      </table>
+      <div id="noUsersMsg" style="display:none; color:#ff9800; text-align:center; margin-top:20px; font-size:1.1em;"></div>
+    </div>
+  </div>
+  <script src="/js/nav.js"></script>
+  <script src="/js/adminDashboard.js"></script>
+</body>
+</html>
+</body>
+</html>

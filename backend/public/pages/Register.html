@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register | Coffee Shop</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+
+<nav class="navbar">
+  <div class="logo">Coffee Shop</div>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/pages/Menu.html">Menu</a>
+    <a href="/pages/Cart.html">Cart</a>
+    <a href="/pages/Orders.html">Orders</a>
+    <a href="/pages/Login.html" id="login-link">Login</a>
+    <a href="/pages/Register.html" id="register-link">Register</a>
+    <li id="dashboardLink" style="display:none;"><a href="/pages/Dashboard.html">Dashboard</a></li>
+    <li id="userName" style="display:none;" class="username"></li>
+    <button id="logout-btn" style="display:none;">Logout</button>
+  </div>
+</nav>
+
+<main class="container">
+  <h1>Register</h1>
+
+  <input id="username" placeholder="Username">
+  <input id="email" type="email" placeholder="Email">
+  <input id="password" type="password" placeholder="Password">
+
+  <button onclick="register()">Register</button>
+
+  <div style="margin-top:18px;">
+    <span style="color:#6f4e37;">Want to register as admin?</span>
+    <a href="/pages/AdminRegister.html" style="margin-left:8px;color:#a67c52;text-decoration:underline;">Register as Admin</a>
+  </div>
+
+  <p style="margin-top:15px;">
+    Already have an account?
+    <a href="/pages/Login.html"><strong>Login</strong></a>
+  </p>
+</main>
+
+<script src="/js/nav.js"></script>
+<script src="/js/auth.js"></script>
+</body>
+</html>

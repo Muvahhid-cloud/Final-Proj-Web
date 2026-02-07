@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Dashboard | Coffee Shop</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    .dashboard-container {
+      max-width: 420px;
+      margin: 60px auto;
+      background: #fff7f0;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(111, 78, 55, 0.15);
+      padding: 36px 32px;
+      text-align: center;
+    }
+    .dashboard-title {
+      font-size: 2.2rem;
+      color: #6f4e37;
+      margin-bottom: 18px;
+      font-family: 'Georgia', serif;
+    }
+    .dashboard-form input {
+      margin-bottom: 18px;
+      border: 1px solid #d7bfa7;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 1rem;
+      background: #fff;
+      transition: border-color 0.2s;
+    }
+    .dashboard-form input:focus {
+      border-color: #6f4e37;
+      outline: none;
+    }
+    .dashboard-form button, .dashboard-back-btn {
+      background: linear-gradient(90deg, #6f4e37 60%, #a67c52 100%);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 28px;
+      font-size: 1.1rem;
+      margin: 8px 0;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(111, 78, 55, 0.08);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .dashboard-form button:hover, .dashboard-back-btn:hover {
+      background: linear-gradient(90deg, #a67c52 60%, #6f4e37 100%);
+      transform: translateY(-2px);
+    }
+    .dashboard-back-btn {
+      display: block;
+      margin: 24px auto 0 auto;
+      width: 180px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Coffee Shop</div>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/pages/Menu.html">Menu</a>
+      <a href="/pages/Cart.html">Cart</a>
+      <a href="/pages/Orders.html">Orders</a>
+      <a href="/pages/Login.html" id="login-link">Login</a>
+      <a href="/pages/Register.html" id="register-link">Register</a>
+      <li id="dashboardLink" style="display:none;"><a href="/pages/Dashboard.html">Dashboard</a></li>
+      <button id="logout-btn" style="display:none;">Logout</button>
+    </div>
+  </nav>
+  <div class="dashboard-container">
+    <div class="dashboard-title">User Dashboard</div>
+    <form class="dashboard-form" onsubmit="event.preventDefault(); updateProfile();">
+      <input id="username" placeholder="Username">
+      <input id="email" placeholder="Email">
+      <button type="submit">Update Profile</button>
+    </form>
+    <form class="dashboard-form" onsubmit="event.preventDefault(); updatePassword();">
+      <input type="password" id="oldPassword" placeholder="Old password">
+      <input type="password" id="newPassword" placeholder="New password">
+      <button type="submit">Update Password</button>
+    </form>
+    <button class="dashboard-back-btn" onclick="window.history.back()">Back</button>
+  </div>
+  <script src="/js/nav.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>
