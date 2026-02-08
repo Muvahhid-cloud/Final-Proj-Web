@@ -4,7 +4,10 @@
 ![MongoDB](https://img.shields.io/badge/Database-MongoDB-green?style=for-the-badge&logo=mongodb)
 ![JWT](https://img.shields.io/badge/Auth-JWT%20%2B%20bcrypt-blue?style=for-the-badge)
 ![RBAC](https://img.shields.io/badge/Security-RBAC-red?style=for-the-badge)
-  https://final-proj-web-3.onrender.com
+
+---------------------------------------------------- 
+
+https://final-proj-web-3.onrender.com
 
 A modern, full-featured **coffee shop e-commerce platform** with user authentication, role-based access control (RBAC), order management, and an admin dashboard. Built with **Node.js**, **Express**, **MongoDB**, and **JWT**.
 
@@ -99,7 +102,7 @@ This is a **full-stack coffee shop e-commerce platform** designed to handle:
 
 ## 📊 Requirements Coverage
 
-### ✅ PROJECT SETUP (10/10 points)
+### ✅ PROJECT SETUP 
 - [x] **Topic Selected**: Coffee Shop E-Commerce Platform ☕
 - [x] **Node.js + Express**: Main server in `server.js` and `app.js`
 - [x] **Modular Structure**: 
@@ -109,14 +112,14 @@ This is a **full-stack coffee shop e-commerce platform** designed to handle:
   - Middleware: `src/middleware/*`
 - [x] **README.md**: This file (with setup, overview, API docs, screenshots)
 
-### ✅ DATABASE (10/10 points)
+### ✅ DATABASE
 - [x] **MongoDB**: Connected via `MONGO_URI` environment variable
 - [x] **Collections** (3):
   1. **User** - `username`, `email`, `password` (hashed), `role` (user/admin), `createdAt`, `updatedAt`
   2. **Order** - `userId` (ref), `items[]`, `totalPrice`, `status` (pending/completed/cancelled), `timestamps`
   3. **Product** - `name`, `category`, `price`, `imageUrl`, `description`, `inStock`
 
-### ✅ API ENDPOINTS (20/20 points)
+### ✅ API ENDPOINTS 
 
 #### Authentication (Public - 2 endpoints)
 - [x] `POST /api/auth/register` - Register new user with encrypted password
@@ -145,7 +148,7 @@ This is a **full-stack coffee shop e-commerce platform** designed to handle:
 - [x] `GET /api/products` - Get all products
 - [x] `GET /api/products/:id` - Get specific product
 
-### ✅ AUTHENTICATION & SECURITY (15/15 points)
+### ✅ AUTHENTICATION & SECURITY
 - [x] **JWT Implementation**: 
   - Token generated on login/register
   - Token contains `userId`, `username`, `role`
@@ -163,7 +166,7 @@ This is a **full-stack coffee shop e-commerce platform** designed to handle:
   - `MONGO_URI` - Database connection
   - Stored in `.env` file (not committed)
 
-### ✅ VALIDATION & ERROR HANDLING (5/5 points)
+### ✅ VALIDATION & ERROR HANDLING 
 - [x] **Input Validation**:
   - Email validation via `validator.isEmail()`
   - Username validation (2-32 characters)
@@ -183,7 +186,7 @@ This is a **full-stack coffee shop e-commerce platform** designed to handle:
 
 ### ✅ ADVANCED FEATURES
 
-#### 7.1 ROLE-BASED ACCESS CONTROL (5/5 points)
+#### 7.1 ROLE-BASED ACCESS CONTROL
 - [x] **Roles Implemented**: `user` and `admin`
 - [x] **Role Middleware**: `role.middleware.js` checks user role
 - [x] **Admin-Only Routes**:
@@ -197,16 +200,16 @@ This is a **full-stack coffee shop e-commerce platform** designed to handle:
   - Regular users: Update own profile, create orders, view own orders
   - Admin users: Full user management, order management, analytics access
 
-#### ⏳ 7.2 SMTP Email Service (0/5 points - NOT IMPLEMENTED)
+#### ⏳ 7.2 SMTP Email Service 
 - [ ] Nodemailer integration
 - [ ] SendGrid/Mailgun API keys
 - Note: Can be added for email notifications on order placement, password reset, etc.
 
 ### ⏳ DEPLOYMENT (0/10 points - NOT CONFIGURED)
-- [ ] No deployment platform configured (Render, Railway, Heroku)
-- [ ] No CI/CD pipeline
-- Note: Setup instructions included below for local deployment
-
+- [ ] Application successfully deployed on Render
+- [ ] Production build running with environment variables securely configured
+- [ ] MongoDB Atlas connected to the deployed backend
+- [ ] Automatic redeployment enabled via GitHub integration
 ---
 
 ## 📁 Project Structure
@@ -625,114 +628,6 @@ The admin dashboard includes:
 
 ---
 
-## 💡 Usage Examples
-
-### Example 1: Complete User Flow
-```bash
-# 1. Register
-curl -X POST http://localhost:5000/api/auth/register \
-  -H "Content-Type: application/json" \
-  -d '{"username":"alice","email":"alice@test.com","password":"Pass123!"}'
-
-# Response: { "token": "eyJ..." }
-
-# 2. Get profile (use token from response)
-curl -X GET http://localhost:5000/api/users/profile \
-  -H "Authorization: Bearer eyJ..."
-
-# 3. View products
-curl -X GET http://localhost:5000/api/products
-
-# 4. Create order
-curl -X POST http://localhost:5000/api/orders \
-  -H "Authorization: Bearer eyJ..." \
-  -H "Content-Type: application/json" \
-  -d '{
-    "items":[{"productId":"xxx","nameSnapshot":"Cappuccino","priceSnapshot":4.50,"quantity":1}],
-    "totalPrice":4.50
-  }'
-
-# 5. View order
-curl -X GET http://localhost:5000/api/orders \
-  -H "Authorization: Bearer eyJ..."
-```
-
-### Example 2: Admin Flow
-```bash
-# 1. Register admin
-curl -X POST http://localhost:5000/api/auth/register-admin \
-  -H "Content-Type: application/json" \
-  -d '{"username":"admin1","email":"admin@test.com","password":"AdminPass123!","phone":"+79991234567"}'
-
-# 2. Login as admin
-curl -X POST http://localhost:5000/api/auth/login \
-  -H "Content-Type: application/json" \
-  -d '{"email":"admin@test.com","password":"AdminPass123!"}'
-
-# Response: { "token": "admin_eyJ..." }
-
-# 3. List all users
-curl -X GET http://localhost:5000/api/users \
-  -H "Authorization: Bearer admin_eyJ..."
-
-# 4. Get analytics
-curl -X GET http://localhost:5000/api/analytics/revenue \
-  -H "Authorization: Bearer admin_eyJ..."
-```
-
----
-
-## 🌐 Deployment
-
-### Deploy to Render
-1. Connect GitHub repo to Render
-2. Set environment variables in Render dashboard:
-   - `MONGO_URI`: Your MongoDB Atlas URI
-   - `JWT_SECRET`: A secure random string
-   - `NODE_ENV`: `production`
-3. Deploy
-
-### Deploy to Railway
-1. Connect GitHub repo
-2. Railway auto-detects Node.js app
-3. Add MongoDB add-on or use external MongoDB Atlas URI
-4. Set env vars via web dashboard
-5. Deploy
-
-### Considerations
-- Ensure `.env` is in `.gitignore` (never commit secrets)
-- Use strong JWT_SECRET in production (e.g., 32+ random characters)
-- Enable HTTPS on deployed URL
-- Monitor logs for errors
-- Use password manager to store production credentials
-
----
-
-## 🎨 Advanced Features Implemented
-
-### ✅ RBAC (Role-Based Access Control)
-- Two roles: `user` and `admin`
-- Admin registration requires phone validation
-- Admin routes protected by role middleware
-- Users cannot access admin endpoints
-
-### ⏳ Future: SMTP Email Service
-Could add for:
-- Order confirmation emails
-- Password reset emails
-- Admin notifications
-Use Nodemailer + SendGrid (API key in .env)
-
-### ⏳ Future Enhancements
-- Payment integration (Stripe/PayPal)
-- Product reviews and ratings
-- Wishlist functionality
-- Email notifications
-- Rate limiting
-- Session management
-- 2FA authentication
-
----
 
 ## 🗄️ Database Schema
 
@@ -808,52 +703,19 @@ Use Nodemailer + SendGrid (API key in .env)
 
 ---
 
-## 📝 Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/my-feature`
-3. Commit changes: `git commit -m "Add my feature"`
-4. Push to branch: `git push origin feature/my-feature`
-5. Open a pull request
-
-### Code Style
-- Use async/await for promises
-- Validate inputs with `validator.js` or custom checks
-- Use error middleware for consistent error handling
-- Add comments for complex logic
-- Follow Node.js naming conventions
-
----
-
-## 📄 License
-
-This project is licensed under the **MIT License** — see LICENSE file for details.
-
----
-
-## 📞 Support & Questions
-
-For issues or questions:
-1. Check existing GitHub issues
-2. Create a new issue with detailed description
-3. Include error logs and steps to reproduce
-4. Provide example curl commands if API-related
-
----
-
 ## 🎉 Summary of Coverage
 
 | Requirement | Points | Status |
 |------------|--------|--------|
-| Project Setup | 10 | ✅ Complete |
-| Database | 10 | ✅ Complete |
-| API Endpoints | 20 | ✅ Complete |
-| Authentication & Security | 15 | ✅ Complete |
-| Validation & Error Handling | 5 | ✅ Complete |
-| Deployment | 10 | ⏳ Not configured |
-| RBAC (Advanced) | 5 | ✅ Complete |
-| SMTP Email (Advanced) | 5 | ⏳ Not implemented |
-| **TOTAL** | **70** | **50/70** |
+| Project Setup | ✅ Complete |
+| Database | ✅ Complete |
+| API Endpoints | ✅ Complete |
+| Authentication & Security | ✅ Complete |
+| Validation & Error Handling | ✅ Complete |
+| Deployment | ✅ Complete |
+| RBAC (Advanced) | ✅ Complete |
+| SMTP Email (Advanced) | Not implemented |
+
 
 ---
 
