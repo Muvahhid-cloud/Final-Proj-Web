@@ -205,7 +205,7 @@ This is a **full-stack coffee shop e-commerce platform** designed to handle:
 - [ ] SendGrid/Mailgun API keys
 - Note: Can be added for email notifications on order placement, password reset, etc.
 
-### ⏳ DEPLOYMENT (0/10 points - NOT CONFIGURED)
+### ✅ DEPLOYMENT
 - [ ] Application successfully deployed on Render
 - [ ] Production build running with environment variables securely configured
 - [ ] MongoDB Atlas connected to the deployed backend
