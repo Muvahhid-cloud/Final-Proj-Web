@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 const Order = require("../models/order.model");
 const Product = require("../models/product.model");
+const User = require("../models/user.model");
 const asyncH = require("../middleware/async.middleware");
+const emailService = require("../services/email.service");
 
 // Delete any order (admin only)
 exports.deleteOrderAdmin = asyncH(async (req, res) => {
@@ -58,6 +60,17 @@ exports.createOrder = asyncH(async (req, res) => {
     totalPrice,
     status: "pending"
   });
+
+  // Send order confirmation email
+  const user = await User.findById(req.user.userId);
+  if (user) {
+    await emailService.sendOrderConfirmationEmail(
+      user.email,
+      user.username,
+      order,
+      order._id.toString()
+    );
+  }
 
   res.status(201).json(order);
 });

@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const validator = require("validator");
 const asyncH = require("../middleware/async.middleware");
+const emailService = require("../services/email.service");
 
 exports.registerAdmin = asyncH(async (req, res) => {
   const { username, email, password, phone } = req.body;
@@ -48,6 +49,9 @@ exports.registerAdmin = asyncH(async (req, res) => {
     role: "admin",
     phone
   });
+
+  // Send welcome email
+  await emailService.sendWelcomeEmail(user.email, user.username);
 
   res.status(201).json({ message: "Admin registered" });
 });
@@ -97,6 +101,9 @@ exports.register = asyncH(async (req, res) => {
     email: String(email).toLowerCase().trim(),
     password: hashed
   });
+
+  // Send welcome email
+  await emailService.sendWelcomeEmail(user.email, user.username);
 
   res.status(201).json({ token: signToken(user) });
 });

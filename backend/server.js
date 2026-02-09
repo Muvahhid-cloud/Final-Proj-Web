@@ -1,6 +1,7 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
 const app = require("./app");
+const emailService = require("./src/services/email.service");
 
 let seedProducts;
 
@@ -17,6 +18,9 @@ mongoose
   .connect(process.env.MONGO_URI)
   .then(async () => {
     console.log("MongoDB connected");
+
+    // Test email service configuration
+    await emailService.testEmailConnection();
 
     // ✅ ONLY run if file exists
     if (seedProducts) {
