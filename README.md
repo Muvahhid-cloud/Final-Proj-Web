@@ -4,7 +4,6 @@
 ![MongoDB](https://img.shields.io/badge/Database-MongoDB-green?style=for-the-badge&logo=mongodb)
 ![JWT](https://img.shields.io/badge/Auth-JWT%20%2B%20bcrypt-blue?style=for-the-badge)
 ![RBAC](https://img.shields.io/badge/Security-RBAC-red?style=for-the-badge)
-![Email](https://img.shields.io/badge/Email-Nodemailer-yellow?style=for-the-badge&logo=gmail)
 
 A modern, full-featured **coffee shop e-commerce platform** with user authentication, role-based access control (RBAC), order management, and an admin dashboard. Built with **Node.js**, **Express**, **MongoDB**, and **JWT**.
 
@@ -101,7 +100,7 @@ This is a **full-stack coffee shop e-commerce platform** designed to handle:
 
 ## 📊 Requirements Coverage
 
-### ✅ PROJECT SETUP (10/10 points)
+### ✅ PROJECT SETUP 
 - [x] **Topic Selected**: Coffee Shop E-Commerce Platform ☕
 - [x] **Node.js + Express**: Main server in `server.js` and `app.js`
 - [x] **Modular Structure**: 
@@ -111,14 +110,14 @@ This is a **full-stack coffee shop e-commerce platform** designed to handle:
   - Middleware: `src/middleware/*`
 - [x] **README.md**: This file (with setup, overview, API docs, screenshots)
 
-### ✅ DATABASE (10/10 points)
+### ✅ DATABASE
 - [x] **MongoDB**: Connected via `MONGO_URI` environment variable
 - [x] **Collections** (3):
   1. **User** - `username`, `email`, `password` (hashed), `role` (user/admin), `createdAt`, `updatedAt`
   2. **Order** - `userId` (ref), `items[]`, `totalPrice`, `status` (pending/completed/cancelled), `timestamps`
   3. **Product** - `name`, `category`, `price`, `imageUrl`, `description`, `inStock`
 
-### ✅ API ENDPOINTS (20/20 points)
+### ✅ API ENDPOINTS 
 
 #### Authentication (Public - 2 endpoints)
 - [x] `POST /api/auth/register` - Register new user with encrypted password
@@ -147,7 +146,7 @@ This is a **full-stack coffee shop e-commerce platform** designed to handle:
 - [x] `GET /api/products` - Get all products
 - [x] `GET /api/products/:id` - Get specific product
 
-### ✅ AUTHENTICATION & SECURITY (15/15 points)
+### ✅ AUTHENTICATION & SECURITY
 - [x] **JWT Implementation**: 
   - Token generated on login/register
   - Token contains `userId`, `username`, `role`
@@ -165,7 +164,7 @@ This is a **full-stack coffee shop e-commerce platform** designed to handle:
   - `MONGO_URI` - Database connection
   - Stored in `.env` file (not committed)
 
-### ✅ VALIDATION & ERROR HANDLING (5/5 points)
+### ✅ VALIDATION & ERROR HANDLING 
 - [x] **Input Validation**:
   - Email validation via `validator.isEmail()`
   - Username validation (2-32 characters)
@@ -185,7 +184,7 @@ This is a **full-stack coffee shop e-commerce platform** designed to handle:
 
 ### ✅ ADVANCED FEATURES
 
-#### 7.1 ROLE-BASED ACCESS CONTROL (5/5 points)
+#### 7.1 ROLE-BASED ACCESS CONTROL
 - [x] **Roles Implemented**: `user` and `admin`
 - [x] **Role Middleware**: `role.middleware.js` checks user role
 - [x] **Admin-Only Routes**:
@@ -199,34 +198,16 @@ This is a **full-stack coffee shop e-commerce platform** designed to handle:
   - Regular users: Update own profile, create orders, view own orders
   - Admin users: Full user management, order management, analytics access
 
-#### 7.2 SMTP Email Service (5/5 points - ✅ IMPLEMENTED)
-- [x] **Nodemailer Integration**: Email service configured in `src/services/email.service.js`
-  - Supports Gmail, SendGrid, Mailgun, and any SMTP service
-  - Uses environment variables for secure API key management
-  - Graceful error handling - app continues if email service fails
-- [x] **Welcome Email**: Sent automatically when user registers
-  - HTML-formatted with professional styling
-  - Includes welcome message and feature overview
-- [x] **Order Confirmation Email**: Sent when order is created
-  - Displays order ID, items, quantities, and total price
-  - Includes order status tracking information
-  - Professional HTML template with Coffee Shop branding
-- [x] **Password Reset Email** (Optional): Template available for future password reset feature
-  - Reset link with token validation
-  - 1-hour expiration for security
-- [x] **Configuration**: 
-  - `EMAIL_USER` - SMTP email address
-  - `EMAIL_PASSWORD` - SMTP password or API key
-  - `EMAIL_HOST` - SMTP host (default: smtp.gmail.com)
-  - `EMAIL_PORT` - SMTP port (default: 587)
-  - `EMAIL_SECURE` - SSL/TLS flag
-  - Supports Gmail, SendGrid, Mailgun, and other SMTP services
+#### ⏳ 7.2 SMTP Email Service (0/5 points - NOT IMPLEMENTED)
+- [ ] Nodemailer integration
+- [ ] SendGrid/Mailgun API keys
+- Note: Can be added for email notifications on order placement, password reset, etc.
 
-### ⏳ DEPLOYMENT (0/10 points - NOT CONFIGURED)
-- [ ] No deployment platform configured (Render, Railway, Heroku)
-- [ ] No CI/CD pipeline
-- Note: Setup instructions included below for local deployment
-
+### ✅ DEPLOYMENT
+- [ ] Application successfully deployed on Render
+- [ ] Production build running with environment variables securely configured
+- [ ] MongoDB Atlas connected to the deployed backend
+- [ ] Automatic redeployment enabled via GitHub integration
 ---
 
 ## 📁 Project Structure
@@ -758,27 +739,21 @@ curl -X GET http://localhost:5000/api/analytics/revenue \
 - Admin routes protected by role middleware
 - Users cannot access admin endpoints
 
-### ✅ Email Service Integration (SMTP)
-Nodemailer integration with automatic email notifications:
-- **Welcome Email**: Sent when users register
-- **Order Confirmation Email**: Sent when orders are placed
-- **Password Reset Email**: Template ready for implementation
-- **Multiple SMTP Support**:
-  - Gmail (with App Passwords)
-  - SendGrid
-  - Mailgun
-  - Custom SMTP servers
-- **Configuration**: All credentials stored securely in `.env`
-- **Error Handling**: Graceful fallback if email service is unavailable
+### ⏳ Future: SMTP Email Service
+Could add for:
+- Order confirmation emails
+- Password reset emails
+- Admin notifications
+Use Nodemailer + SendGrid (API key in .env)
 
 ### ⏳ Future Enhancements
 - Payment integration (Stripe/PayPal)
 - Product reviews and ratings
 - Wishlist functionality
+- Email notifications
 - Rate limiting
 - Session management
 - 2FA authentication
-- Push notifications
 
 ---
 
@@ -856,39 +831,6 @@ Nodemailer integration with automatic email notifications:
 
 ---
 
-## 📝 Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/my-feature`
-3. Commit changes: `git commit -m "Add my feature"`
-4. Push to branch: `git push origin feature/my-feature`
-5. Open a pull request
-
-### Code Style
-- Use async/await for promises
-- Validate inputs with `validator.js` or custom checks
-- Use error middleware for consistent error handling
-- Add comments for complex logic
-- Follow Node.js naming conventions
-
----
-
-## 📄 License
-
-This project is licensed under the **MIT License** — see LICENSE file for details.
-
----
-
-## 📞 Support & Questions
-
-For issues or questions:
-1. Check existing GitHub issues
-2. Create a new issue with detailed description
-3. Include error logs and steps to reproduce
-4. Provide example curl commands if API-related
-
----
-
 ## 🎉 Summary of Coverage
 
 | Requirement | Points | Status |
@@ -900,78 +842,8 @@ For issues or questions:
 | Validation & Error Handling | 5 | ✅ Complete |
 | Deployment | 10 | ⏳ Not configured |
 | RBAC (Advanced) | 5 | ✅ Complete |
-| SMTP Email (Advanced) | 5 | ✅ Complete |
-| **TOTAL** | **80** | **75/80** |
-
----
-
-## 📧 Email Service Setup Guide
-
-### For Gmail Users
-1. **Enable 2-Factor Authentication**:
-   - Go to https://myaccount.google.com
-   - Select Security → 2-Step Verification
-   - Complete the setup
-
-2. **Generate App Password**:
-   - Go to https://myaccount.google.com/apppasswords
-   - Select "Mail" and "Windows Computer"
-   - Google will generate a 16-character app password
-   - Copy this password
-
-3. **Update `.env`**:
-   ```env
-   EMAIL_USER=your_email@gmail.com
-   EMAIL_PASSWORD=the_16_char_app_password
-   EMAIL_HOST=smtp.gmail.com
-   EMAIL_PORT=587
-   EMAIL_SECURE=false
-   EMAIL_USERNAME=your_email@gmail.com
-   ```
-
-### For SendGrid Users
-1. **Create Account** at https://sendgrid.com
-2. **Get SMTP Credentials**:
-   - Go to Settings → API Keys
-   - Create a new API key
-   - Copy the key
-
-3. **Update `.env`**:
-   ```env
-   EMAIL_HOST=smtp.sendgrid.net
-   EMAIL_PORT=587
-   EMAIL_USER=apikey
-   EMAIL_PASSWORD=SG.your_api_key_here
-   EMAIL_USERNAME=your_email@sendgrid.com
-   ```
-
-### For Mailgun Users
-1. **Create Account** at https://www.mailgun.com
-2. **Get SMTP Credentials**:
-   - Go to Domain Settings → SMTP
-   - Copy SMTP server, username, and password
-
-3. **Update `.env`**:
-   ```env
-   EMAIL_HOST=smtp.mailgun.org
-   EMAIL_PORT=587
-   EMAIL_USER=postmaster@your_domain.mailgun.org
-   EMAIL_PASSWORD=your_mailgun_password
-   EMAIL_USERNAME=postmaster@your_domain.mailgun.org
-   ```
-
-### Verification
-After updating `.env`, start the server:
-```bash
-npm start
-```
-
-You should see in the console:
-```
-✅ Email service is properly configured and connected
-```
-
-If you see an error, double-check your credentials and SMTP settings.
+| SMTP Email (Advanced) | 5 | ⏳ Not implemented |
+| **TOTAL** | **70** | **50/70** |
 
 ---
 
