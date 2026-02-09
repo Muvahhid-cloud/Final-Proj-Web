@@ -19,9 +19,6 @@ mongoose
   .then(async () => {
     console.log("MongoDB connected");
 
-    // Test email service configuration
-    await emailService.testEmailConnection();
-
     // ✅ ONLY run if file exists
     if (seedProducts) {
       try {
@@ -31,8 +28,13 @@ mongoose
       }
     }
 
-    app.listen(PORT, () =>
-      console.log(`Server: http://localhost:${PORT}`)
-    );
+    app.listen(PORT, () => {
+      console.log(`Server: http://localhost:${PORT}`);
+
+      // Test email service configuration AFTER server starts (non-blocking)
+      emailService.testEmailConnection().catch((error) => {
+        console.error("Email test failed:", error.message);
+      });
+    });
   })
   .catch((err) => console.error("MongoDB error:", err.message));
